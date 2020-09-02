@@ -55,19 +55,25 @@ public class DriverListener extends AbstractWebDriverEventListener {
 
     @Attachment (value = "Page screenshot", type = "image/png")
     public static byte[] takeScreenShot(String name, WebDriver driver){
-        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        try {
-            //save screenshot
-            FileChannel srcChannel = new FileInputStream(src).getChannel();
-            File dst = new File(SCREENSHOT_LOCATION, name + ".png");
-            FileChannel dstChannel = new FileOutputStream(dst).getChannel();
-            dstChannel.transferFrom(srcChannel, 0, srcChannel.size());
-            LOG.info("Taken screenshot: "+ name);
+        if (driver != null){
+            File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            try {
+                //save screenshot
+                FileChannel srcChannel = new FileInputStream(src).getChannel();
+                File dst = new File(SCREENSHOT_LOCATION, name + ".png");
+                FileChannel dstChannel = new FileOutputStream(dst).getChannel();
+                dstChannel.transferFrom(srcChannel, 0, srcChannel.size());
+                LOG.info("Taken screenshot: "+ name);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //return screenshot for @attachment
+            return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        } else {
+            LOG.info("No driver found for screenshot");
+            return null;
         }
-        //return screenshot for @attachment
-        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+
     }
 }

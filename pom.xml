@@ -50,6 +50,23 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.11.2</version>
+        </dependency>
+
+
     </dependencies>
 
     <!--Props added to avoid error: Source option 5 is no longer supported.
@@ -58,6 +75,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <aspectj.version>1.9.4</aspectj.version>
+        <suiteXmlFile>seleniumSuite.xml</suiteXmlFile>
     </properties>
 
     <build>
@@ -76,6 +94,13 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+
+                    <suiteXmlFiles>
+
+                        <!-- TestNG suite XML files -->
+                        <suiteXmlFile>src/test/java/${suiteXmlFile}</suiteXmlFile>
+
+                    </suiteXmlFiles>
 
                 </configuration>
                 <dependencies>

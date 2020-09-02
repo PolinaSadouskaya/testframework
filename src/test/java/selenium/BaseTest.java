@@ -1,3 +1,5 @@
+package selenium;
+
 import io.qameta.allure.Allure;
 
 import java.io.IOException;
@@ -7,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class BaseTest {
-
 
     public BaseTest() {
 
@@ -20,5 +21,7 @@ public class BaseTest {
             e.printStackTrace();
         }
     }
+
+
 
 }

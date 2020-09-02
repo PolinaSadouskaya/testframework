@@ -5,9 +5,9 @@
         <listener class-name = "helpers.listeners.TestNgListener"/>
     </listeners>
 
-    <test name="Login test">
+    <test name="Rest tests for endpoint: posts">
         <classes>
-            <class name="LoginTest"/>
+            <class name="rest.jsonplaceholder.posts.SingleGetTest"/>
         </classes>
     </test>
 </suite>

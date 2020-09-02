@@ -1,3 +1,5 @@
+package selenium;
+
 import app.config.AppConfig;
 import app.pages.LoginPage;
 import app.pages.Page;
